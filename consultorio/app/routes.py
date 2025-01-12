@@ -4,7 +4,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 app = Flask(__name__)
 app.secret_key = 'supersecretkey'
 
-# Usuarios de ejemplo (almacenados en memoria)
+# Usuarios de ejemplo 
 USERS = {
     'admin': {'password': generate_password_hash('admin123'), 'role': 'admin'},
     'secretary': {'password': generate_password_hash('secretary123'), 'role': 'secretary'},
