@@ -1,0 +1,76 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e6f7ff; /* Celeste claro */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Contenedor principal del formulario */
+form {
+    background-color: #ffffff; /* Blanco */
+    border: 2px solid #4da6ff; /* Azul intermedio */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px 30px;
+    width: 100%;
+    max-width: 400px;
+}
+
+/* Títulos */
+h1 {
+    color: #005c99; /* Azul oscuro */
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Etiquetas */
+label {
+    display: block;
+    color: #005c99; /* Azul oscuro */
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+/* Campos de texto */
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #4da6ff; /* Azul intermedio */
+    border-radius: 5px;
+    background-color: #f0faff; /* Celeste muy claro */
+    font-size: 16px;
+    color: #333; /* Gris oscuro */
+}
+
+/* Botón de guardar */
+button {
+    background-color: #0073e6; /* Azul fuerte */
+    color: #ffffff; /* Blanco */
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #005c99; /* Azul más oscuro */
+}
+
+/* Ajuste para pantallas pequeñas */
+@media (max-width: 480px) {
+    form {
+        padding: 15px 20px;
+    }
+    input, select, button {
+        font-size: 14px;
+    }
+}

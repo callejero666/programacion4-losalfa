@@ -4,12 +4,137 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel de Administración</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin_dashboard.css') }}">
 </head>
 <body>
-    <h2>Panel de Administración</h2>
-    <p>Bienvenido, Administrador</p>
-    <a href="{{ url_for('logout') }}">Cerrar sesión</a>
+    <header>
+        <h1>Panel de Administración</h1>
+        <p>Bienvenido, Administrador</p>
+        <!-- Barra de navegación o enlace de salida -->
+        <a href="{{ url_for('logout') }}">Cerrar sesión</a>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#pacientes">Pacientes</a></li>
+            <li><a href="#secretarios">Secretarios</a></li>
+            <li><a href="#doctores">Doctores</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <!-- Tabla de Pacientes -->
+        <section id="pacientes">
+            <h2>Pacientes</h2>
+            <button class="btn" onclick="crearPaciente()">Crear Paciente</button>
+            <table>
+                <thead>
+                    <tr>
+                        <th>DNI</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Edad</th>
+                        <th>Sexo</th>
+                        <th>Domicilio</th>
+                        <th>Correo</th>
+                        <th>Teléfono</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>12345678</td>
+                        <td>Juan</td>
+                        <td>Pérez</td>
+                        <td>30</td>
+                        <td>M</td>
+                        <td>Calle Falsa 123</td>
+                        <td>juan@example.com</td>
+                        <td>123456789</td>
+                        <td>
+                            <button class="btn" onclick="editarPaciente()">Editar</button>
+                            <button class="btn danger" onclick="borrarPaciente()">Borrar</button>
+                        </td>
+                    </tr>
+                    <!-- Más filas aquí -->
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Tabla de Secretarios -->
+        <section id="secretarios">
+            <h2>Secretarios</h2>
+            <button class="btn" onclick="crearSecretario()">Crear Secretario</button>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Correo</th>
+                        <th>Teléfono</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>María López</td>
+                        <td>maria@example.com</td>
+                        <td>987654321</td>
+                        <td>
+                            <button class="btn" onclick="editarSecretario()">Editar</button>
+                            <button class="btn danger" onclick="borrarSecretario()">Borrar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Tabla de Doctores -->
+        <section id="doctores">
+            <h2>Doctores</h2>
+            <button class="btn" onclick="crearDoctor()">Crear Doctor</button>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Especialidad</th>
+                        <th>Correo</th>
+                        <th>Teléfono</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Pedro Gómez</td>
+                        <td>Cardiología</td>
+                        <td>pedro@example.com</td>
+                        <td>456123789</td>
+                        <td>
+                            <button class="btn" onclick="editarDoctor()">Editar</button>
+                            <button class="btn danger" onclick="borrarDoctor()">Borrar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <script>
+        function crearPaciente() { alert('Formulario para crear paciente.'); }
+        function editarPaciente() { alert('Formulario para editar paciente.'); }
+        function borrarPaciente() { alert('Confirmación para borrar paciente.'); }
+
+        function crearSecretario() { alert('Formulario para crear secretario.'); }
+        function editarSecretario() { alert('Formulario para editar secretario.'); }
+        function borrarSecretario() { alert('Confirmación para borrar secretario.'); }
+
+        function crearDoctor() { alert('Formulario para crear doctor.'); }
+        function editarDoctor() { alert('Formulario para editar doctor.'); }
+        function borrarDoctor() { alert('Confirmación para borrar doctor.'); }
+    </script>
 </body>
 </html>
 

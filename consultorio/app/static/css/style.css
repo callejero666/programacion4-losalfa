@@ -1,26 +1,80 @@
+/* Estilos generales */
 body {
     font-family: Arial, sans-serif;
+    background-color: #e6f7ff; /* Fondo celeste claro */
+    margin: 0;
+    padding: 0;
 }
 
+/* Encabezados */
 h1, h2 {
     text-align: center;
+    color: #005c99; /* Azul oscuro */
+    margin-top: 20px;
 }
 
+/* Formulario */
 form {
     width: 300px;
-    margin: 0 auto;
+    margin: 20px auto; /* Centrado automático */
+    background-color: #ffffff; /* Fondo blanco */
+    border: 2px solid #4da6ff; /* Borde azul intermedio */
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra sutil */
 }
 
-input, select, button {
+/* Campos de entrada y select */
+input, select {
     width: 100%;
     padding: 10px;
     margin: 10px 0;
+    border: 1px solid #4da6ff; /* Azul intermedio */
+    border-radius: 5px;
+    background-color: #f0faff; /* Celeste claro */
+    color: #333; /* Gris oscuro */
+    font-size: 14px;
 }
 
+/* Botón */
 button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    background-color: #0073e6; /* Azul fuerte */
+    color: #ffffff; /* Blanco */
+    font-size: 14px;
+    font-weight: bold;
     cursor: pointer;
 }
 
+button:hover {
+    background-color: #005c99; /* Azul más oscuro */
+}
+
+/* Enlaces */
 a {
     text-decoration: none;
+    color: #005c99; /* Azul oscuro */
+    font-weight: bold;
+    text-align: center;
+    display: block;
+    margin-top: 10px;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Responsivo */
+@media (max-width: 480px) {
+    form {
+        width: 90%; /* Reduce el tamaño del formulario en pantallas pequeñas */
+    }
+
+    input, select, button {
+        font-size: 12px; /* Reduce el tamaño del texto */
+    }
 }
