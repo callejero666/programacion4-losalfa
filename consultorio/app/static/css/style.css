@@ -1,80 +1,123 @@
 /* Estilos generales */
 body {
     font-family: Arial, sans-serif;
-    background-color: #e6f7ff; /* Fondo celeste claro */
+    background-image: url('/static/img/cen.jpeg'); 
+    background-size: cover; 
+    background-position: center; 
+    background-attachment: fixed; 
     margin: 0;
     padding: 0;
-}
-
-/* Encabezados */
-h1, h2 {
-    text-align: center;
-    color: #005c99; /* Azul oscuro */
-    margin-top: 20px;
-}
-
-/* Formulario */
-form {
-    width: 300px;
-    margin: 20px auto; /* Centrado automático */
-    background-color: #ffffff; /* Fondo blanco */
-    border: 2px solid #4da6ff; /* Borde azul intermedio */
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra sutil */
-}
-
-/* Campos de entrada y select */
-input, select {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #4da6ff; /* Azul intermedio */
-    border-radius: 5px;
-    background-color: #f0faff; /* Celeste claro */
     color: #333; /* Gris oscuro */
-    font-size: 14px;
+    position: relative;
+    min-height: 100vh; 
+    display: flex;
+    flex-direction: column;
+}
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(224, 247, 250, 0.8);
+    z-index: -1; 
 }
 
-/* Botón */
-button {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: none;
-    border-radius: 5px;
-    background-color: #0073e6; /* Azul fuerte */
-    color: #ffffff; /* Blanco */
-    font-size: 14px;
-    font-weight: bold;
-    cursor: pointer;
+
+main {
+    flex-grow: 1; /* Hace que el contenido principal ocupe el espacio restante */
 }
 
-button:hover {
-    background-color: #005c99; /* Azul más oscuro */
+/* Encabezado y menú de navegación */
+header {
+    background-color: rgb(0, 92, 153); 
+    padding: 10px 0;
 }
 
-/* Enlaces */
-a {
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
     text-decoration: none;
-    color: #005c99; /* Azul oscuro */
     font-weight: bold;
+}
+
+.login-button {
+    background-color: transparent; /* Fondo transparente */
+    border: 2px solid #ff6600; /* Borde naranja */
+    border-radius: 20px;
+    padding: 5px 15px;
+    color: #fffefe; 
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.login-button:hover {
+    background-color: #ff6600; /* Fondo naranja */
+    color: white; 
+}
+
+/* Sección de bienvenida */
+.welcome-section {
     text-align: center;
-    display: block;
-    margin-top: 10px;
+    padding: 40px 0;
+    flex-grow: 1; /* Para ocupar el espacio restante */
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Centra el contenido verticalmente */
 }
 
-a:hover {
-    text-decoration: underline;
+/* Sección de información */
+.info-section {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    margin-top: auto; /* Empuja esta sección hacia abajo */
 }
 
-/* Responsivo */
-@media (max-width: 480px) {
-    form {
-        width: 90%; /* Reduce el tamaño del formulario en pantallas pequeñas */
-    }
-
-    input, select, button {
-        font-size: 12px; /* Reduce el tamaño del texto */
-    }
+.info-box {
+    background-color: #ffffff; /* Blanco */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    width: 30%;
+    text-align: center;
 }
+
+.info-box h2 {
+    color: #005c99; /* Azul oscuro */
+}
+
+/* Pie de página */
+footer {
+    position: relative;
+    height: 60px;
+    background-color: #005c99; /* Azul oscuro */
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 20px; /* Espacio a la derecha */
+}
+
+.settings-icon {
+    display: inline-block;
+}
+
+.settings-icon img {
+    width: 37.8px;  /* 1 cm */
+    height: 37.8px; /* 1 cm */
+    cursor: pointer; /* Puntero al pasar sobre el ícono */
+    background: transparent;
+}  
