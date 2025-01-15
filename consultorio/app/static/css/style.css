@@ -54,6 +54,14 @@ nav ul li a {
     font-weight: bold;
 }
 
+.nav-logo {
+    height: 60px;
+    width: auto;
+    vertical-align: middle;
+    margin: 0;
+    padding: 0px;
+}
+
 .login-button {
     background-color: transparent; /* Fondo transparente */
     border: 2px solid #ff6600; /* Borde naranja */
