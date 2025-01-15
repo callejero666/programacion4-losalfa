@@ -3,24 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Centro Médico</title>
+    <title>Centro Médico Integral</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
+
 <body>
-    <h1>Bienvenido al Centro Médico Integral</h1>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#"><img src="{{ url_for('static', filename='img/logo-consultorio.png') }}" alt="" class="nav-logo"></a></li>
+                <li><a href="#">Servicios</a></li>
+                <li><a href="#">Contacto</a></li>
+                <li><a class="login-button" href="{{ url_for('login') }}">Iniciar sesión</a></li>
+            </ul>
+        </nav>
+    </header>
     
-    <h2>Iniciar sesión</h2>
-    <form action="{{ url_for('login') }}" method="POST">
-        <label for="username">Usuario:</label>
-        <input type="text" id="username" name="username" required><br>
-        
-        <label for="password">Contraseña:</label>
-        <input type="password" id="password" name="password" required><br>
-        
-        <button type="submit">Iniciar sesión</button>
-    </form>
-    
-    <h2>¿No tienes cuenta? <a href="{{ url_for('register') }}">Crear cuenta</a></h2>
+    <main>
+        <section class="welcome-section">
+            <h1>Bienvenido al Centro Médico Integral</h1>
+        </section>
+
+        <section class="info-section">
+            <div class="info-box">
+                <h2>Historia</h2>
+                <p>El Centro Médico Integral fue fundado en 1990 con el objetivo de proporcionar atención médica de alta calidad.</p>
+            </div>
+            <div class="info-box">
+                <h2>Misión</h2>
+                <p>Brindar atención médica accesible y eficiente, mejorando la calidad de vida de nuestros pacientes.</p>
+            </div>
+            <div class="info-box">
+                <h2>Visión</h2>
+                <p>Ser un referente en el cuidado de la salud a nivel NOA, con innovación y compromiso constante.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+         <a href="{{ url_for('login') }}" class="settings-icon">
+            <img src="{{ url_for('static', filename='img/admin.png') }}" alt="Configuración">
+        </a>
+    </footer>
 </body>
 </html>
-
+    
