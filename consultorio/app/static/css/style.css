@@ -24,7 +24,6 @@ body::before {
     z-index: -1; 
 }
 
-
 main {
     flex-grow: 1; /* Hace que el contenido principal ocupe el espacio restante */
 }
@@ -60,6 +59,7 @@ nav ul li a {
     vertical-align: middle;
     margin: 0;
     padding: 0px;
+    cursor: default; 
 }
 
 .login-button {
@@ -81,10 +81,10 @@ nav ul li a {
 .welcome-section {
     text-align: center;
     padding: 40px 0;
-    flex-grow: 1; /* Para ocupar el espacio restante */
+    flex-grow: 1; 
     display: flex;
     justify-content: center;
-    align-items: center; /* Centra el contenido verticalmente */
+    align-items: center; 
 }
 
 /* Sección de información */
@@ -92,7 +92,7 @@ nav ul li a {
     display: flex;
     justify-content: space-around;
     padding: 20px;
-    margin-top: auto; /* Empuja esta sección hacia abajo */
+    margin-top: auto; 
 }
 
 .info-box {
@@ -128,4 +128,55 @@ footer {
     height: 37.8px; /* 1 cm */
     cursor: pointer; /* Puntero al pasar sobre el ícono */
     background: transparent;
-}  
+}
+
+/* Media Queries para pantallas pequeñas */
+@media (max-width: 768px) {
+
+    /* Menú de navegación */
+    nav ul {
+        flex-direction: column; /* Cambiar a columna */
+        align-items: flex-start; /* Alinear a la izquierda */
+    }
+
+    nav ul li {
+        margin-bottom: 10px; /* Añadir espacio entre los items */
+    }
+
+    .nav-logo {
+        height: 50px; /* Ajustar tamaño de logo */
+    }
+
+    /* Sección de información */
+    .info-section {
+        flex-direction: column; /* Apilar las cajas de información */
+        align-items: center;
+    }
+
+    .info-box {
+        width: 80%; /* Hacer las cajas de información más grandes */
+        margin-bottom: 20px; /* Añadir espacio entre las cajas */
+    }
+
+    /* Pie de página */
+    footer {
+        justify-content: center; /* Centrar el contenido del pie */
+        padding-right: 0;
+    }
+
+    .settings-icon img {
+        width: 30px; /* Ajustar el tamaño de los íconos */
+        height: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Ajustes para pantallas más pequeñas */
+    .nav-logo {
+        height: 40px; /* Reducir aún más el logo */
+    }
+
+    .info-box {
+        width: 90%; /* Ampliar aún más el tamaño en pantallas muy pequeñas */
+    }
+}
