@@ -1,0 +1,110 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f8ff;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Títulos */
+h1, h2 {
+    text-align: center;
+    color: #1e90ff; /* Azul */
+    margin-top: 30px;
+}
+
+/* Barra lateral */
+.sidebar {
+    height: 100vh;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #4fa3f7; /* Celeste */
+    padding-top: 50px;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar a {
+    display: block;
+    color: white;
+    padding: 15px;
+    text-decoration: none;
+    margin: 10px 0;
+    font-size: 18px;
+}
+
+.sidebar a:hover {
+    background-color: #007bff; /* Azul más oscuro */
+    border-radius: 5px;
+}
+
+/* Contenido principal */
+.main-content {
+    margin-left: 250px;
+    padding: 20px;
+}
+
+.main-content h2 {
+    color: #007bff; /* Azul más oscuro */
+}
+
+.main-content p {
+    font-size: 18px;
+    color: #555;
+}
+
+/* Tabla de administración */
+.table-container {
+    margin-top: 30px;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #4fa3f7; /* Celeste */
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #e1e9f2; /* Color al pasar el ratón */
+}
+
+button {
+    background-color: #1e90ff; /* Azul */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #007bff; /* Azul más oscuro */
+}
+
+/* Enlaces */
+a {
+    text-decoration: none;
+    color: #1e90ff;
+}
+
+a:hover {
+    color: #007bff;
+}

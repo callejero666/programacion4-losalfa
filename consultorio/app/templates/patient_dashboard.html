@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seleccionar Turno</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/patient_dashboard.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Seleccionar Turno</h1>
+
+        <!-- Selección del médico -->
+        <section id="doctores">
+            <h2>Selecciona un Doctor</h2>
+            <ul id="lista-doctores"></ul>
+        </section>
+
+        <!-- Calendario de días de atención -->
+        <section id="calendario" class="hidden">
+            <h2>Calendario de Atención</h2>
+            <div id="dias-atencion"></div>
+        </section>
+
+        <!-- Horarios disponibles -->
+        <section id="horarios" class="hidden">
+            <h2>Horarios Disponibles</h2>
+            <ul id="lista-horarios"></ul>
+        </section>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/patient_dashboard.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,182 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('/static/img/cen.jpeg'); 
+    background-size: cover; 
+    background-position: center; 
+    background-attachment: fixed; 
+    margin: 0;
+    padding: 0;
+    color: #333; /* Gris oscuro */
+    position: relative;
+    min-height: 100vh; 
+    display: flex;
+    flex-direction: column;
+}
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(224, 247, 250, 0.8);
+    z-index: -1; 
+}
+
+main {
+    flex-grow: 1; /* Hace que el contenido principal ocupe el espacio restante */
+}
+
+/* Encabezado y menú de navegación */
+header {
+    background-color: rgb(0, 92, 153); 
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.nav-logo {
+    height: 60px;
+    width: auto;
+    vertical-align: middle;
+    margin: 0;
+    padding: 0px;
+    cursor: default; 
+}
+
+.login-button {
+    background-color: transparent; /* Fondo transparente */
+    border: 2px solid #ff6600; /* Borde naranja */
+    border-radius: 20px;
+    padding: 5px 15px;
+    color: #fffefe; 
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.login-button:hover {
+    background-color: #ff6600; /* Fondo naranja */
+    color: white; 
+}
+
+/* Sección de bienvenida */
+.welcome-section {
+    text-align: center;
+    padding: 40px 0;
+    flex-grow: 1; 
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+/* Sección de información */
+.info-section {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    margin-top: auto; 
+}
+
+.info-box {
+    background-color: #ffffff; /* Blanco */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    width: 30%;
+    text-align: center;
+}
+
+.info-box h2 {
+    color: #005c99; /* Azul oscuro */
+}
+
+/* Pie de página */
+footer {
+    position: relative;
+    height: 60px;
+    background-color: #005c99; /* Azul oscuro */
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 20px; /* Espacio a la derecha */
+}
+
+.settings-icon {
+    display: inline-block;
+}
+
+.settings-icon img {
+    width: 37.8px;  /* 1 cm */
+    height: 37.8px; /* 1 cm */
+    cursor: pointer; /* Puntero al pasar sobre el ícono */
+    background: transparent;
+}
+
+/* Media Queries para pantallas pequeñas */
+@media (max-width: 768px) {
+
+    /* Menú de navegación */
+    nav ul {
+        flex-direction: column; /* Cambiar a columna */
+        align-items: flex-start; /* Alinear a la izquierda */
+    }
+
+    nav ul li {
+        margin-bottom: 10px; /* Añadir espacio entre los items */
+    }
+
+    .nav-logo {
+        height: 50px; /* Ajustar tamaño de logo */
+    }
+
+    /* Sección de información */
+    .info-section {
+        flex-direction: column; /* Apilar las cajas de información */
+        align-items: center;
+    }
+
+    .info-box {
+        width: 80%; /* Hacer las cajas de información más grandes */
+        margin-bottom: 20px; /* Añadir espacio entre las cajas */
+    }
+
+    /* Pie de página */
+    footer {
+        justify-content: center; /* Centrar el contenido del pie */
+        padding-right: 0;
+    }
+
+    .settings-icon img {
+        width: 30px; /* Ajustar el tamaño de los íconos */
+        height: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Ajustes para pantallas más pequeñas */
+    .nav-logo {
+        height: 40px; /* Reducir aún más el logo */
+    }
+
+    .info-box {
+        width: 90%; /* Ampliar aún más el tamaño en pantallas muy pequeñas */
+    }
+}

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Pacientes</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/register.css') }}">
+</head>
+<body>
+    <div class="registro-container">
+        <h1>Registro de Pacientes</h1>
+        <form action="#" method="POST" id="registro-paciente-form">
+            <!-- Primer renglón (DNI, Nombre, Apellido) -->
+            <div class="grid-container">
+                <div class="form-group">
+                    <label for="dni">DNI:</label>
+                    <input type="text" id="dni" name="dni" placeholder="Ingrese el DNI del paciente" required>
+                </div>
+                <div class="form-group">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" placeholder="Ingrese el nombre" required>
+                </div>
+                <div class="form-group">
+                    <label for="apellido">Apellido:</label>
+                    <input type="text" id="apellido" name="apellido" placeholder="Ingrese el apellido" required>
+                </div>
+            </div>
+
+            <!-- Segundo renglón (Edad, Sexo, Obra Social) -->
+            <div class="grid-container">
+                <div class="form-group">
+                    <label for="edad">Edad:</label>
+                    <input type="number" id="edad" name="edad" placeholder="Ingrese la edad" required>
+                </div>
+                <div class="form-group">
+                    <label for="sexo">Sexo:</label>
+                    <select id="sexo" name="sexo" required>
+                        <option value="" disabled selected>Seleccione una opción</option>
+                        <option value="M">Masculino</option>
+                        <option value="F">Femenino</option>
+                        <option value="O">Otro</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="obra-social">Obra Social:</label>
+                    <input type="text" id="obra-social" name="obra-social" placeholder="Ingrese la obra social">
+                </div>
+            </div>
+
+            <!-- Tercer renglón (Domicilio, Teléfono, Correo) -->
+            <div class="grid-container">
+                <div class="form-group">
+                    <label for="domicilio">Domicilio:</label>
+                    <input type="text" id="domicilio" name="domicilio" placeholder="Ingrese el domicilio" required>
+                </div>
+                <div class="form-group">
+                    <label for="telefono">Teléfono:</label>
+                    <input type="tel" id="telefono" name="telefono" placeholder="Ingrese el número de teléfono" required>
+                </div>
+                <div class="form-group">
+                    <label for="correo">Correo:</label>
+                    <input type="email" id="correo" name="correo" placeholder="Ingrese el correo electrónico" required>
+                </div>
+            </div>
+
+            <!-- Cuarto renglón (Usuario, Contraseña, Repetir Contraseña) -->
+            <div class="grid-container">
+                <div class="form-group">
+                    <label for="usuario">Usuario:</label>
+                    <input type="text" id="usuario" name="usuario" placeholder="Ingrese un nombre de usuario" required>
+                </div>
+                <div class="form-group">
+                    <label for="contraseña">Contraseña:</label>
+                    <input type="password" id="contraseña" name="contraseña" placeholder="Ingrese una contraseña" required>
+                </div>
+                <div class="form-group">
+                    <label for="repetir-contraseña">Repetir Contraseña:</label>
+                    <input type="password" id="repetir-contraseña" name="repetir-contraseña" placeholder="Repita la contraseña" required>
+                </div>
+            </div>
+
+            <!-- Botóones -->
+            <div class="button-container">
+                <button type="submit">Guardar</button>
+                <a href="{{ url_for('login') }}" class="cancel-button">Cancelar</a>
+            </div>
+    </div>
+
+    <script>
+        // Validación de la coincidencia de contraseñas
+        document.getElementById('registro-paciente-form').addEventListener('submit', function(event) {
+            const password = document.getElementById('contraseña').value;
+            const confirmPassword = document.getElementById('repetir-contraseña').value;
+
+            if (password !== confirmPassword) {
+                alert("Las contraseñas no coinciden.");
+                event.preventDefault(); // Evita el envío del formulario
+            }
+        });
+    </script>
+</body>
+</html>
