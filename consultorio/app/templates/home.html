@@ -12,8 +12,23 @@
         <nav>
             <ul>
                 <li><a href="#"><img src="{{ url_for('static', filename='img/logo-consultorio.png') }}" alt="" class="nav-logo"></a></li>
-                <li><a href="#">Servicios</a></li>
-                <li><a href="#">Contacto</a></li>
+                <li class="dropdown">
+                    <a href="#">Servicios</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Consulta General - Dr. Juan Pérez</a></li>
+                        <li><a href="#">Pediatría - Dra. María López</a></li>
+                        <li><a href="#">Cardiología - Dr. Carlos Gómez</a></li>
+                        <li><a href="#">Odontología - Dra. Ana Rodríguez</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#">Contacto</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Teléfono: (387)- 4033330</a></li>
+                        <li><a href="#">Email: centromedicointegral@salta.com</a></li>
+                        <li><a href="#">Dirección: San Martin 111, Ciudad de Salta</a></li>
+                    </ul>
+                </li>
                 <li><a class="login-button" href="{{ url_for('login') }}">Iniciar sesión</a></li>
             </ul>
         </nav>
@@ -47,4 +62,3 @@
     </footer>
 </body>
 </html>
-    

@@ -86,6 +86,10 @@ nav ul li a {
     justify-content: center;
     align-items: center; 
 }
+.welcome-section h1 {
+    font-size: 3rem; /* Tamaño de fuente más grande */
+    font-weight: bold;
+}
 
 /* Sección de información */
 .info-section {
@@ -179,4 +183,57 @@ footer {
     .info-box {
         width: 90%; /* Ampliar aún más el tamaño en pantallas muy pequeñas */
     }
+}
+
+/* Menú desplegable */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    display: inline-block;
+    position: relative;
+}
+
+a {
+    text-decoration: none;
+    padding: 10px;
+    display: block;
+    color: white;
+}
+
+/* Estilos para el contenedor desplegable */
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 1px solid #ccc;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    min-width: 200px;
+    z-index: 1;
+    border-radius: 5px;
+}
+
+.dropdown-menu li {
+    padding: 12px;
+    color: #333;
+}
+
+.dropdown-menu a {
+    color: #333;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.dropdown-menu a:hover {
+    background-color: #6e9cbb;
+    
+    cursor: default;
 }
