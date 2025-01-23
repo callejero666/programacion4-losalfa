@@ -10,6 +10,9 @@
     <div class="container">
         <h1>Seleccionar Turno</h1>
 
+        <!-- Botón de cerrar sesión -->
+        <button id="logout-btn">Cerrar Sesión</button>
+
         <!-- Selección del médico -->
         <section id="doctores">
             <h2>Selecciona un Doctor</h2>
@@ -19,13 +22,19 @@
         <!-- Calendario de días de atención -->
         <section id="calendario" class="hidden">
             <h2>Calendario de Atención</h2>
-            <div id="dias-atencion"></div>
+            <div id="mes-selector">
+                <button id="prev-month">Anterior</button>
+                <span id="mes-titulo"></span>
+                <button id="next-month">Siguiente</button>
+            </div>
+            <div id="dias-atencion" class="calendario-grid"></div>
         </section>
 
-        <!-- Horarios disponibles -->
-        <section id="horarios" class="hidden">
-            <h2>Horarios Disponibles</h2>
-            <ul id="lista-horarios"></ul>
+        <!-- Detalles de los turnos -->
+        <section id="detalles-turno" class="hidden">
+            <h2>Turnos Disponibles</h2>
+            <p id="franja-horaria"></p>
+            <ul id="turnos-disponibles"></ul>
         </section>
     </div>
 
