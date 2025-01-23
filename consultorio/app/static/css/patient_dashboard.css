@@ -1,23 +1,21 @@
-/* Estilos para los turnos */
-#turnos-disponibles li {
-    padding: 5px;
-    margin: 5px;
+.turno-disponible {
+    background-color: #28a745; /* Verde */
+    color: white;
     cursor: pointer;
-    border-radius: 5px;
+    padding: 5px;
+    margin: 5px 0;
 }
 
-#turnos-disponibles li.disponible {
-    background-color: #4CAF50; /* Verde */
+.turno-seleccionado {
+    background-color: #dc3545; /* Rojo */
     color: white;
+    cursor: not-allowed;
+    padding: 5px;
+    margin: 5px 0;
 }
 
-#turnos-disponibles li.ocupado {
-    background-color: #F44336; /* Rojo */
-    color: white;
-}
-
-#turnos-disponibles li:hover {
-    opacity: 0.8;
+.turno-disponible:hover {
+    background-color: #218838; /* Verde oscuro */
 }
 
 /* Para los días seleccionados y desactivados */
@@ -72,4 +70,18 @@
 
 #dias-atencion div:hover {
     background-color: #e1f5fe;
+}
+
+#cancelar-turno-btn {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #FF5722; /* Naranja */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#cancelar-turno-btn:hover {
+    background-color: #D84315;
 }

@@ -10,8 +10,8 @@
     <div class="container">
         <h1>Seleccionar Turno</h1>
 
-        <!-- Botón de cerrar sesión -->
-        <button id="logout-btn">Cerrar Sesión</button>
+        <!-- Barra de navegación o enlace de salida -->
+        <a href="{{ url_for('logout') }}">Cerrar sesión</a>
 
         <!-- Selección del médico -->
         <section id="doctores">
@@ -35,6 +35,9 @@
             <h2>Turnos Disponibles</h2>
             <p id="franja-horaria"></p>
             <ul id="turnos-disponibles"></ul>
+
+                <!-- Botón para cancelar el turno -->
+            <button id="cancelar-turno-btn" class="hidden">Cancelar Turno</button>
         </section>
     </div>
 
