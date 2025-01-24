@@ -20,17 +20,15 @@ document.addEventListener("DOMContentLoaded", function() {
     ];
 
     // Elementos del DOM
-    const listaDoctores = document.getElementById('lista-doctores');
-    const calendario = document.getElementById('calendario');
-    const detallesTurno = document.getElementById('detalles-turno');
-    const turnosDisponiblesDiv = document.getElementById('turnos-disponibles');
     const mesTitulo = document.getElementById('mes-titulo');
-    const cancelarTurnoBtn = document.getElementById('cancelar-turno-btn');
     const diasAtencion = document.getElementById('dias-atencion');
-    const btnAnteriorMes = document.getElementById('btn-anterior-mes');
-    const btnSiguienteMes = document.getElementById('btn-siguiente-mes');
-
-    // Mostramos los doctores
+    const btnAnteriorMes = document.getElementById('prev-month');
+    const btnSiguienteMes = document.getElementById('next-month');
+    const turnosDisponiblesDiv = document.getElementById('turnos-disponibles');
+    const cancelarTurnoBtn = document.getElementById('cancelar-turno-btn');
+    const listaDoctores = document.getElementById('lista-doctores');
+    
+    // Mostrar los doctores
     doctores.forEach(doctor => {
         const li = document.createElement('li');
         li.textContent = doctor.nombre;
@@ -79,9 +77,6 @@ document.addEventListener("DOMContentLoaded", function() {
         }
 
         medicoSeleccionado = doctor;
-        calendario.classList.remove('hidden');
-
-        // Mostrar el calendario del mes actual
         mostrarCalendario(fechaActual.getMonth(), fechaActual.getFullYear());
     }
 
@@ -101,8 +96,6 @@ document.addEventListener("DOMContentLoaded", function() {
             li.addEventListener('click', () => seleccionarTurno(dia.dia, turno, li));
             turnosDisponiblesDiv.appendChild(li);
         });
-
-        detallesTurno.classList.remove('hidden');
     }
 
     // Función para seleccionar un turno
@@ -120,14 +113,6 @@ document.addEventListener("DOMContentLoaded", function() {
         liElemento.classList.add('turno-seleccionado');
 
         alert(`Has seleccionado el turno para el ${new Date(dia).toLocaleDateString()} a las ${turno}.`);
-
-        // Mostrar detalles del turno
-        document.getElementById('detalle-turno-seleccionado').textContent = 
-            `Turno confirmado: ${new Date(dia).toLocaleDateString()} a las ${turno}`;
-
-        // Ocultar el calendario y mostrar los detalles del turno
-        detallesTurno.classList.add('hidden');
-        document.getElementById('turno-confirmado').classList.remove('hidden');
     }
 
     // Función para cancelar el turno
@@ -149,10 +134,6 @@ document.addEventListener("DOMContentLoaded", function() {
             turno.classList.remove('turno-seleccionado');
             turno.classList.add('turno-disponible');
         });
-
-        // Ocultar el turno confirmado y permitir la selección de un nuevo turno
-        document.getElementById('turno-confirmado').classList.add('hidden');
-        detallesTurno.classList.remove('hidden');
     });
 
     // Funciones para cambiar de mes
@@ -177,4 +158,3 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
 });
-
