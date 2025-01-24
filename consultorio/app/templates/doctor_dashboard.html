@@ -3,12 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panel de Doctor</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Doctor Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/doctor_dashboard.css') }}">
 </head>
 <body>
-    <h2>Panel de Doctor</h2>
-    <p>Bienvenido, Doctor</p>
-    <a href="{{ url_for('logout') }}">Cerrar sesión</a>
+    <div class="container">
+        <h1>Doctor Dashboard</h1>
+        <!-- Barra de navegación o enlace de salida -->
+        <a href="{{ url_for('logout') }}">Cerrar sesión</a>
+
+        <!-- Calendario -->
+        <section id="calendario">
+            <h2>Calendario de Atención</h2>
+            <div id="mes-selector">
+                <button id="prev-month">Anterior</button>
+                <span id="mes-titulo">Enero 2025</span>
+                <button id="next-month">Siguiente</button>
+            </div>
+            <div id="dias-atencion" class="calendario-grid"></div>
+        </section>
+
+        <section id="franja-horaria">
+            <h2>Seleccionar Franja Horaria</h2>
+            <label for="horario-inicio">Hora de inicio:</label>
+            <input type="time" id="horario-inicio">
+            <label for="horario-fin">Hora de fin:</label>
+            <input type="time" id="horario-fin">
+            <button id="aplicar-horarios">Aplicar a días seleccionados</button>
+        </section>
+        
+        <section id="cuadro-turnos">
+            <h2>Turnos Divididos</h2>
+        </section>
+        
+
+    <script src="{{ url_for('static', filename='js/doctor_dashboard.js') }}"></script>
 </body>
 </html>
