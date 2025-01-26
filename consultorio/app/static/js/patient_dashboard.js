@@ -1,160 +1,130 @@
-document.addEventListener("DOMContentLoaded", function() { 
+document.addEventListener("DOMContentLoaded", function () {
     let medicoSeleccionado = null;
     let turnoSeleccionado = null;
-    let pacienteId = 123; // Id del paciente, simulado
-    let pacienteHaSeleccionadoTurno = false;
+    let pacienteId = 123; // Simulado
+    let turnoPorMedicoSeleccionado = {};
     let fechaActual = new Date();
-    
-    // Simulaciones de datos
+  
     const doctores = [
-        { id: 1, nombre: 'Dr. Juan Pérez', horarioTrabajo: ['09:00-12:00', '14:00-18:00'] },
-        { id: 2, nombre: 'Dra. María López', horarioTrabajo: ['08:00-12:00', '13:00-17:00'] }
+      { id: 1, nombre: "Dr. Juan Pérez", horarioTrabajo: ["09:00-12:00", "14:00-18:00"] },
+      { id: 2, nombre: "Dra. María López", horarioTrabajo: ["08:00-12:00", "13:00-17:00"] },
+      { id: 3, nombre: "Dr. Carlos Gómez", horarioTrabajo: ["08:00-12:00", "13:00-17:00"] },
+      { id: 4, nombre: "Dra. Ana Rodríguez", horarioTrabajo: ["09:00-12:00", "14:00-18:00"] },
     ];
-
+  
     const horariosDisponibles = [
-        { doctorId: 1, dia: '2025-01-25', turnos: ['09:00', '09:30', '10:00', '10:30'] },
-        { doctorId: 2, dia: '2025-01-26', turnos: ['08:00', '08:30', '09:00', '09:30'] },
-        { doctorId: 1, dia: '2025-02-05', turnos: ['09:00', '09:30', '10:00', '10:30'] },
-        { doctorId: 2, dia: '2025-02-15', turnos: ['08:00', '08:30', '09:00', '09:30'] },
-        { doctorId: 1, dia: '2025-03-10', turnos: ['09:00', '09:30', '10:00', '10:30'] }
+      { doctorId: 1, dia: "2025-01-25", turnos: ["09:00", "09:30", "10:00", "10:30"] },
+      { doctorId: 2, dia: "2025-01-26", turnos: ["08:00", "08:30", "09:00", "09:30"] },
+      { doctorId: 3, dia: "2025-02-05", turnos: ["08:00", "08:30", "09:00", "09:30"] },
+      { doctorId: 4, dia: "2025-02-15", turnos: ["09:00", "09:30", "10:00", "10:30"] },
     ];
-
-    // Elementos del DOM
-    const mesTitulo = document.getElementById('mes-titulo');
-    const diasAtencion = document.getElementById('dias-atencion');
-    const btnAnteriorMes = document.getElementById('prev-month');
-    const btnSiguienteMes = document.getElementById('next-month');
-    const turnosDisponiblesDiv = document.getElementById('turnos-disponibles');
-    const cancelarTurnoBtn = document.getElementById('cancelar-turno-btn');
-    const listaDoctores = document.getElementById('lista-doctores');
-    
-    // Mostrar los doctores
-    doctores.forEach(doctor => {
-        const li = document.createElement('li');
-        li.textContent = doctor.nombre;
-        li.addEventListener('click', () => seleccionarDoctor(doctor));
-        listaDoctores.appendChild(li);
-    });
-
-    // Función para mostrar el calendario de un mes
-    function mostrarCalendario(mes, año) {
-        // Limpiamos el calendario y el título
-        diasAtencion.innerHTML = '';
-        mesTitulo.textContent = `${mes + 1} - ${año}`;
-
-        // Obtener primer día del mes
-        let primerDia = new Date(año, mes, 1);
-        let ultimoDia = new Date(año, mes + 1, 0);
-        
-        // Crear los días en cuadrícula
-        for (let i = 0; i < primerDia.getDay(); i++) {
-            const espacioVacio = document.createElement('div');
-            diasAtencion.appendChild(espacioVacio);
-        }
-        
-        for (let dia = 1; dia <= ultimoDia.getDate(); dia++) {
-            const divDia = document.createElement('div');
-            const fecha = new Date(año, mes, dia);
-            divDia.textContent = dia;
-            divDia.classList.add('dia');
-
-            // Marcar los días de atención
-            const diaDisponible = horariosDisponibles.find(d => new Date(d.dia).toLocaleDateString() === fecha.toLocaleDateString() && d.doctorId === medicoSeleccionado.id);
-            if (diaDisponible) {
-                divDia.classList.add('disponible');
-                divDia.addEventListener('click', () => mostrarTurnos(diaDisponible));
-            }
-
-            diasAtencion.appendChild(divDia);
-        }
-    }
-
-    // Función para seleccionar un doctor
-    function seleccionarDoctor(doctor) {
-        if (pacienteHaSeleccionadoTurno) {
-            alert('Ya has seleccionado un turno. No puedes seleccionar más.');
-            return;
-        }
-
+  
+    const calendarioTemplate = `
+      <div class="mes-selector">
+        <button class="prev-month">Anterior</button>
+        <span class="mes-titulo"></span>
+        <button class="next-month">Siguiente</button>
+      </div>
+      <div class="calendario-grid"></div>
+      <ul class="turnos-disponibles"></ul>
+    `;
+  
+    // Configurar tarjetas de doctores
+    document.querySelectorAll(".doctor-card").forEach((card, index) => {
+      const doctor = doctores[index];
+      const calendarioContainer = card.querySelector(".calendario-container");
+      calendarioContainer.innerHTML = calendarioTemplate;
+  
+      // Evento al seleccionar doctor
+      card.addEventListener("click", () => {
         medicoSeleccionado = doctor;
-        mostrarCalendario(fechaActual.getMonth(), fechaActual.getFullYear());
-    }
-
-    // Función para mostrar los turnos disponibles de un día
-    function mostrarTurnos(dia) {
-        if (pacienteHaSeleccionadoTurno) {
-            alert('Ya has seleccionado un turno. No puedes seleccionar más.');
-            return;
-        }
-
-        // Mostramos los turnos disponibles
-        turnosDisponiblesDiv.innerHTML = '';
-        dia.turnos.forEach(turno => {
-            const li = document.createElement('li');
-            li.textContent = turno;
-            li.classList.add('turno-disponible');
-            li.addEventListener('click', () => seleccionarTurno(dia.dia, turno, li));
-            turnosDisponiblesDiv.appendChild(li);
+  
+        // Ocultar otros calendarios
+        document.querySelectorAll(".calendario-container").forEach((calendario) => {
+          calendario.classList.add("hidden");
         });
+  
+        // Mostrar calendario actual
+        calendarioContainer.classList.remove("hidden");
+        mostrarCalendario(calendarioContainer, fechaActual.getMonth(), fechaActual.getFullYear());
+      });
+  
+      // Botones de navegación del calendario
+      const btnPrev = calendarioContainer.querySelector(".prev-month");
+      const btnNext = calendarioContainer.querySelector(".next-month");
+  
+      btnPrev.addEventListener("click", () => {
+        fechaActual.setMonth(fechaActual.getMonth() - 1);
+        mostrarCalendario(calendarioContainer, fechaActual.getMonth(), fechaActual.getFullYear());
+      });
+  
+      btnNext.addEventListener("click", () => {
+        fechaActual.setMonth(fechaActual.getMonth() + 1);
+        mostrarCalendario(calendarioContainer, fechaActual.getMonth(), fechaActual.getFullYear());
+      });
+    });
+  
+    // Mostrar calendario
+    function mostrarCalendario(container, mes, año) {
+      const calendarioGrid = container.querySelector(".calendario-grid");
+      const mesTitulo = container.querySelector(".mes-titulo");
+      calendarioGrid.innerHTML = "";
+      mesTitulo.textContent = `${mes + 1} - ${año}`;
+  
+      const primerDia = new Date(año, mes, 1);
+      const ultimoDia = new Date(año, mes + 1, 0);
+  
+      for (let i = 0; i < primerDia.getDay(); i++) {
+        calendarioGrid.appendChild(document.createElement("div"));
+      }
+  
+      for (let dia = 1; dia <= ultimoDia.getDate(); dia++) {
+        const fecha = new Date(año, mes, dia).toISOString().split("T")[0];
+        const divDia = document.createElement("div");
+        divDia.textContent = dia;
+        divDia.classList.add("dia");
+  
+        const diaDisponible = horariosDisponibles.find(
+          (d) => d.dia === fecha && d.doctorId === medicoSeleccionado.id
+        );
+  
+        if (diaDisponible) {
+          divDia.classList.add("disponible");
+          divDia.addEventListener("click", () => mostrarTurnos(container, diaDisponible));
+        }
+  
+        calendarioGrid.appendChild(divDia);
+      }
     }
-
-    // Función para seleccionar un turno
+  
+    // Mostrar turnos disponibles
+    function mostrarTurnos(container, dia) {
+      const turnosUl = container.querySelector(".turnos-disponibles");
+      turnosUl.innerHTML = "";
+  
+      dia.turnos.forEach((turno) => {
+        const li = document.createElement("li");
+        li.textContent = turno;
+        li.classList.add("turno-disponible");
+        li.addEventListener("click", () => seleccionarTurno(dia.dia, turno, li));
+        turnosUl.appendChild(li);
+      });
+    }
+  
+    // Seleccionar turno
     function seleccionarTurno(dia, turno, liElemento) {
-        if (pacienteHaSeleccionadoTurno) {
-            alert('Ya has seleccionado un turno. No puedes seleccionar más.');
-            return;
-        }
-
-        turnoSeleccionado = { dia: dia, turno: turno };
-        pacienteHaSeleccionadoTurno = true;
-
-        // Cambiar el color del turno seleccionado a rojo
-        liElemento.classList.remove('turno-disponible');
-        liElemento.classList.add('turno-seleccionado');
-
-        alert(`Has seleccionado el turno para el ${new Date(dia).toLocaleDateString()} a las ${turno}.`);
+      if (turnoPorMedicoSeleccionado[medicoSeleccionado.id]) {
+        alert("Ya seleccionaste un turno con este médico.");
+        return;
+      }
+  
+      turnoSeleccionado = { dia, turno };
+      turnoPorMedicoSeleccionado[medicoSeleccionado.id] = turno;
+  
+      liElemento.classList.remove("turno-disponible");
+      liElemento.classList.add("turno-seleccionado");
+  
+      alert(`Turno seleccionado para el ${dia} a las ${turno}.`);
     }
-
-    // Función para cancelar el turno
-    cancelarTurnoBtn.addEventListener('click', () => {
-        if (!pacienteHaSeleccionadoTurno) {
-            alert('No tienes un turno seleccionado para cancelar.');
-            return;
-        }
-
-        // Cancelamos el turno seleccionado
-        turnoSeleccionado = null;
-        pacienteHaSeleccionadoTurno = false;
-
-        alert('Tu turno ha sido cancelado.');
-
-        // Restablecer el color del turno a verde (disponible)
-        const turnosSeleccionados = document.querySelectorAll('.turno-seleccionado');
-        turnosSeleccionados.forEach(turno => {
-            turno.classList.remove('turno-seleccionado');
-            turno.classList.add('turno-disponible');
-        });
-    });
-
-    // Funciones para cambiar de mes
-    btnAnteriorMes.addEventListener('click', () => {
-        if (fechaActual.getMonth() > 0) {
-            fechaActual.setMonth(fechaActual.getMonth() - 1);
-        } else {
-            fechaActual.setMonth(11);
-            fechaActual.setFullYear(fechaActual.getFullYear() - 1);
-        }
-        mostrarCalendario(fechaActual.getMonth(), fechaActual.getFullYear());
-    });
-
-    btnSiguienteMes.addEventListener('click', () => {
-        if (fechaActual.getMonth() < 11) {
-            fechaActual.setMonth(fechaActual.getMonth() + 1);
-        } else {
-            fechaActual.setMonth(0);
-            fechaActual.setFullYear(fechaActual.getFullYear() + 1);
-        }
-        mostrarCalendario(fechaActual.getMonth(), fechaActual.getFullYear());
-    });
-
-});
+  });
+  
