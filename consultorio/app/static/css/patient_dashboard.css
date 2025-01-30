@@ -172,24 +172,25 @@ a {
     font-size: 1rem;
 }
 
-/* Calendario */
+/* Calendario 
 .calendario-container {
     position: absolute; 
     top: 100%; 
     left: 0;
     right: 0;
-    background-color: #ffffff;
     border: 1px solid #ddd;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     z-index: 100; 
     display: none; 
     margin-top: 10px;
 }
+*/
 
 /* Muestra el calendario cuando no está oculto */
 .calendario-container.hidden {
     display: none;
 }
+
 
 .calendario-container:not(.hidden) {
     display: block;
@@ -293,5 +294,3 @@ footer {
     color: #666;
     cursor: not-allowed;
   }
-  
-  
